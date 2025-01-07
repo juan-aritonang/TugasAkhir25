@@ -8,14 +8,25 @@ export interface CsvRecord {
 }
 
 export async function parseCsvFile(fileContent: string): Promise<CsvRecord[]> {
+  const FIELD_MAP = {
+    date: 'tanggal',
+    'port name': 'port_use',
+    'utz%': 'utz(%)',
+  };
+
   const records: CsvRecord[] = [];
   const parser: Parser = parse(fileContent, {
     columns: true,
-    skip_empty_lines: true
+    skip_empty_lines: true,
   });
 
   for await (const record of parser) {
-    records.push(record);
+    // Map actual CSV fields to standard keys
+    records.push({
+      date: record[FIELD_MAP.date],
+      'port name': record[FIELD_MAP['port name']],
+      'utz%': record[FIELD_MAP['utz%']],
+    });
   }
 
   return records;

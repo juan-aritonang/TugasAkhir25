@@ -19,7 +19,7 @@ router.get('/:filename', async (req, res) => {
 
     res.json(formattedData);
   } catch (error) {
-    res.status(500).json({ error: 'Error reading file' });
+    res.status(500).json({ error: 'Error reading file', message: error.message });
   }
 });
 

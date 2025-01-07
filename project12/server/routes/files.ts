@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     const csvFiles = files.filter(file => file.endsWith('.csv'));
     res.json(csvFiles);
   } catch (error) {
-    res.status(500).json({ error: 'Error reading directory' });
+    res.status(500).json({ error: 'Error reading directory', message: error.message });
   }
 });
 
