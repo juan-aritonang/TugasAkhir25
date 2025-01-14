@@ -10,12 +10,12 @@ export interface FormattedData {
 }
 
 export function transformCsvData(records: CsvRecord[]): FormattedData {
-  const portNames = [...new Set(records.map(record => record['port name']))];
-  
+  const portNames = [...new Set(records.map(record => record['port_use']))]; // Map to actual field
+
   const data = records.map(record => ({
-    date: record.date,
-    portName: record['port name'],
-    utilization: parseFloat(record['utz%'])
+    date: record['tanggal'], // Map 'tanggal' to 'date'
+    portName: record['port_use'], // Map 'port_use' to 'port name'
+    utilization: parseFloat(record['utz(%)']), // Map 'utz(%)' to 'utz%'
   }));
 
   return { portNames, data };
