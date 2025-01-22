@@ -11,7 +11,7 @@ export function PortSelector({ portNames, selectedPort, disabled, onPortChange }
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-2">
-        Select Port
+        Select Nearend
       </label>
       <select
         className="w-full border border-gray-300 rounded-md shadow-sm p-2"
